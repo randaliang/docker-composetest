@@ -1,0 +1,25 @@
+server:
+  port: 9502
+
+spring:
+  jmx:
+    default-domain: ${spring.application.name}
+  mvc:
+    favicon:
+      enabled: false
+eureka:
+  server:
+    #自我保护模式默认为true。Eureka Server在一定时间内没有接收到某个微服务的心跳（默认90s）会注销该实例。设置为true后不会注销。
+    enable-self-preservation: false
+    #r清理无效节点的时间间隔，默认60000毫秒
+    eviction-interval-timer-in-ms: 60000       
+  dashboard:
+    enabled: false
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      
